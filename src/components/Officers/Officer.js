@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import Axios from '../../lib/Axios';
 import "../CurrentCallsTable/CurrentCallsTable.css"
 import Draggable from 'react-draggable'
 import { Button } from '@material-ui/core';
+
 export class officer extends Component {
     state = {
         officerArray:[],
@@ -12,7 +13,7 @@ export class officer extends Component {
         status:""
     }
 async componentDidMount(){
-    axios.get("http://localhost:3001/api/officer/get-all-officer")
+    Axios.get("/officer/get-all-officer")
         .then(response =>{
             if(response.status === 200 && response !=null){
                 this.setState({
@@ -42,7 +43,7 @@ handleOnSubmit= async (event)=>{
             beat:this.state.beat,
             status:this.state.status
         }
-        let success = await axios.post("http://localhost:3001/api/officer/create-officer", userInputObj)
+        let success = await Axios.post("/officer/create-officer", userInputObj)
         console.log(success);
         let newArray = [
             ...this.state.officerArray, success.data.payload
@@ -60,7 +61,7 @@ handleDeleteByID = async(_id)=>{
     
 
     try {
-        let deletedOfficer = await axios.delete(`http://localhost:3001/api/officer/delete-by-id/${_id}`)
+        let deletedOfficer = await Axios.delete(`/officer/delete-by-id/${_id}`)
         
         let filteredArray = this.state.officerArray.filter(
             (item)=> item._id !== deletedOfficer.data.payload._id

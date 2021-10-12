@@ -1,5 +1,5 @@
 import React, { Component , useState, useEffect} from 'react'
-import axios from 'axios'
+import Axios from '../../lib/Axios';
 
 import Draggable, {DraggableCore} from 'react-draggable'
 
@@ -40,7 +40,7 @@ export class PedCheck extends Component {
     //   }
 
     getPedInfo=()=>{
-      axios.get(`http://localhost:3001/api/ped/get-by-name?fullName=${this.state.pedSearchInput}`)
+      Axios.get(`/ped/get-by-name?fullName=${this.state.pedSearchInput}`)
         .then((response)=>{
           const data = response.data[0]
           // if (data.warrants.length > 0){

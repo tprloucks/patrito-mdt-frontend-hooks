@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import Axios from '../../lib/Axios'
 import "./CurrentCallsTable.css"
 import Draggable, {DraggableCore} from 'react-draggable'
 
@@ -9,7 +9,7 @@ export class CurrentCallsTable extends Component {
   }
    async componentDidMount(){
       
-      axios.get( "https://www.dallasopendata.com/resource/rfyj-p8vj.json?$limit=15")
+      Axios.get( "https://www.dallasopendata.com/resource/rfyj-p8vj.json?$limit=15")
       
         .then(response =>{
           

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
-import axios from 'axios'
+import Axios from '../../lib/Axios';
 import { Button } from '@material-ui/core';
 
 
@@ -12,7 +12,7 @@ export class VehicleCheck extends Component {
         vehicleArray:[]
     }
 getVehicleInfo=()=>{
-    axios.get(`http://localhost:3001/api/vehicle/get-by-plate?plate=${this.state.vehicleSearchInput}`)
+    Axios.get(`/vehicle/get-by-plate?plate=${this.state.vehicleSearchInput}`)
         .then((response)=>{
             const data = response.data[0]
 
