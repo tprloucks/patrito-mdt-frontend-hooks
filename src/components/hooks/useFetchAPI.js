@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 function useFetchAPI(url) {
   const baseURL =
-    process.env.NODE_ENV === "production"
+    process.env.NODE_ENV === "development"
       ? "http://localhost:3001/api"
       : "/api";
 
