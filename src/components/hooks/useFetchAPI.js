@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 function useFetchAPI(url) {
   const baseURL =
-    process.env.NODE_ENV === "development"
+    process.env.NODE_ENV === "production"
       ? "http://localhost:3001/api"
       : "/api";
 
@@ -67,7 +67,7 @@ function useFetchAPI(url) {
         });
       }
     } catch (e) {
-      //console.log(e.response);
+      // console.log(e.response);
       setError(e.response.data.message);
       setIsLoading(false);
       handleMessageOpen();
